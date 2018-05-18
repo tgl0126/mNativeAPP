@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>登录</title>
+		<script type="text/javascript" src="js/fontSize.js" ></script>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/style.css" />
+		<style>
+			html,
+			body {
+				background-color: #FFFFFF;
+				height: 100%;
+			}
+			.mui-bar{background-color: #FFFFFF;}
+			.mui-bar-nav{-webkit-box-shadow: none;box-shadow: none;}
+			.mui-content { text-align: center; background-color: white; height: 100%; }  
+			.logo { width: 30%; margin-top: .2rem; }  
+			.input { background-color: white; border: solid 1px #AAAAAA; border-radius: 30px; width: 80%; height: 0.9rem; display: inline-flex; margin: 0 auto; margin-top: 0.3rem; }  
+			.input img { width: 0.50rem; height: 0.50rem; margin: auto 0px; margin-left: 15px; }  
+			.input input { border: none; height: 100%; margin: auto 0px; margin-left: 0px; margin-right: 20px; padding-left: 5px; }  
+			.userLogin {border: none;background-color: #008FFF;font-size: .3rem; width: 100%; height: 1rem; text-align: center; border-radius: 100px; }
+			
+			.middle-func{padding-bottom: 1.5rem;}
+			.middle-func div{background:white;height:1rem;line-height: 1rem;width: 86%; margin-left: 7%; margin-top:.3rem;margin-bottom:.4rem;text-align: center; border-radius: 100px; border: 1px solid #d7d7d7;}
+			.middle-func input[type=text], 
+			.middle-func input[type=password]{padding: .1rem 0;font-size:.36rem;border: none;width: 70%; float: right; margin: .2rem 10% .2rem 0; height: .6rem;line-height: 1.6;}
+			.middle-func .iconfont,.middle-func .mui-icon{color:#a6b0bd;font-size: .45rem;margin-top: .25rem;}
+			.middle-func .user-div{border: 1px solid #008FFF; background: #008FFF;}
+			.middle-func .doct-div{ border: 1px solid #008FFF; background: white;}
+			
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<img class="logo" src="images/logo.png" />
+			<div class="middle-func">
+				<div>
+					<span class="iconfont icon-yisheng"></span>
+					<input id="mobilePhone" type="text" class="" placeholder="用户账号"/>
+				</div>
+				<div>
+					<span class="mui-icon mui-icon-locked"></span>
+					<input type="passWord" class="" id="passWord" placeholder="输入密码"/>
+				</div>
+				<div class="user-div">
+				<button id="userLogin" class="userLogin mui-btn mui-btn-primary" data-loading-text="正在登录...">
+					登录
+				</button>
+				</div>
+			</div>
+		</div>
+	<body>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			mui.plusReady(function(){
+				document.querySelector("#userLogin").addEventListener('tap',function(){
+					console.log("ddd")
+				})
+				setTimeout(function(){
+					plus.navigator.closeSplashscreen();
+				},5000)
+			})
+		</script>
+	</body>
+
+</html>

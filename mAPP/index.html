@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>首页</title>
+		<script type="text/javascript" src="js/fontSize.js"></script>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/style.css" />
+		<style>
+			html, body { background-color: #efeff4; }
+			ul{list-style: none;margin: 0;padding: 0;}
+    	
+	    	.item{margin: .2rem;font-size: .3rem; background-color: #fff;}
+	    	.item .item-title{padding: .2rem;font-weight: 600;}
+	    	.item-icon{margin-right: .3rem;}
+	    	.item-name{line-height: 1.6;}
+	    	.item-icon:after{content: "";border: solid .12rem #0077B3;}
+	    	.item-content{padding: .2rem .1rem;}
+	    	/*内容*/
+	    	.item-content-li{ display: inline-block;margin-top: .2rem;width: 24%;border: solid 1px #00d0d0;border-radius: 10px;}/*10AEFF;*/
+	    	.item-content-li p{margin: 0;padding: .2rem 0; text-align: center; font-size: .3rem; line-height: 1.2;}
+	    	.item-content-li .item-content-li-value{padding: .2rem 0 0;font-size: .36rem;color: #0077B3;}
+	    	.item-content-li-name{color: #999;}
+	    	
+	    	.item-content-li-point{display: inline-block;width: 49%;margin: .2rem 0;}
+	    	.item-content-li-point p{margin: 0;padding: .2rem;text-align: center;font-size: .3rem;line-height: 1.6;overflow: hidden;}
+	    	.item-content-li-point-name{display: inline-block;width: 55%;background-color: #D1F8F3;}
+	    	.item-content-li-point-value{display: inline-block;width: 40%; background-color: #eee;}
+	    	
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <h1 class="mui-title">首页</h1>
+		</header>
+		<div class="mui-content">
+		<div class="item">
+			<div class="item-title">
+				<span class="item-icon"> </span>
+				<span class="item-name">签约统计</span>
+			</div>
+			<ul class="item-content">
+				<li class="item-content-li">
+					<p class="item-content-li-value">1</p>
+					<p class="item-content-li-name">今日新增</p>
+				</li>
+				<li class="item-content-li">
+					<p class="item-content-li-value">1</p>
+					<p class="item-content-li-name">今日监测</p>
+				</li>
+				<li class="item-content-li">
+					<p class="item-content-li-value">1</p>
+					<p class="item-content-li-name">签约人数</p>
+				</li>
+				<li class="item-content-li">
+					<p class="item-content-li-value">1</p>
+					<p class="item-content-li-name">未签约人数</p>
+				</li>
+			</ul>
+		</div>
+		<div class="item">
+			<div class="item-title">
+				<span class="item-icon"> </span>
+				<span class="item-name">重点人群</span>
+			</div>
+			<ul class="item-content" id="ul_item_point">
+			</ul>
+		</div>
+	</div>
+
+		<script src="js/util.js"></script>
+		<script type="text/javascript">
+			(function() {
+				mui.init({
+					swipeBack: true //启用右滑关闭功能
+				});
+				mui.plusReady(function() {
+					// 创建子webview窗口 并初始化
+					var aniShow = {};
+					util.initSubpage(aniShow);
+					
+					var nview = plus.nativeObj.View.getViewById('tabBar'),
+						activePage = plus.webview.currentWebview(),
+						targetPage,
+						subpages = util.options.subpages,
+						pageW = window.innerWidth,
+						currIndex = 0;
+					
+						
+					/**
+					 * 根据判断view控件点击位置判断切换的tab
+					 */
+					nview.addEventListener('click', function(e) {
+						
+						
+						var clientX = e.clientX;
+						if(clientX > 0 && clientX <= parseInt(pageW * 0.25)) {
+							currIndex = 0;
+						} else if(clientX > parseInt(pageW * 0.25) && clientX <= parseInt(pageW * 0.5)) {
+							currIndex = 1;
+						} else if(clientX > parseInt(pageW * 0.5) && clientX <= parseInt(pageW * 0.75)) {
+							currIndex = 2;
+						} else {
+							currIndex = 3;
+						}
+						// 匹配对应tab窗口	
+						if(currIndex > 0) {
+							targetPage = plus.webview.getWebviewById(subpages[currIndex - 1]);
+						} else {
+							targetPage = plus.webview.currentWebview();
+						}
+
+						if(targetPage == activePage) {
+							return;
+						}
+						util.toggleNview(currIndex);
+							// 子页面切换
+							util.changeSubpage(targetPage, activePage, aniShow);
+							//更新当前活跃的页面
+							activePage = targetPage;
+						/*if(currIndex !== 3) { 
+							//底部选项卡切换
+							util.toggleNview(currIndex);
+							// 子页面切换
+							util.changeSubpage(targetPage, activePage, aniShow);
+							//更新当前活跃的页面
+							activePage = targetPage;
+						} else {
+							//第四个tab 打开新窗口
+							plus.webview.open('html/setting.html', 'new', {
+							titleNView: {
+								titleText: "设置",
+								backgroundColor: '#003686',
+								titleColor: '#FFFFFF',
+								autoBackButton: true,
+								titleSize:titleSize*.38+'px',
+								buttons:[{text:'保存',float:'right',fontSize:titleSize*.3+'px'}]
+							},
+						}, 'slide-in-right', 200);
+						}*/
+					});
+				});
+			})();
+		</script>
+	</body>
+
+</html>

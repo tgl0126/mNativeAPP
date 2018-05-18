@@ -1,0 +1,44 @@
+/*灰色字体颜色*/
+.font-color-gray {
+	color: #8f8f94;
+}
+
+/*底部border线条颜色*/
+.border-bottom-line {
+	border-bottom: solid 1px #d4d4d4;
+}
+
+/*pick 样式适配大小rem*/
+.mui-poppicker-header .mui-btn { font-size: .3rem; padding: .1rem .2rem; line-height: 1.5; margin: .1rem .1rem; }
+.mui-pciker-list, .mui-pciker-rule { box-sizing: border-box; padding: 0px; margin: 0px; width: 100%; position: absolute; left: 0px; top: 50%; margin-top: -.5rem; height: .9rem; line-height: .9rem; font-size: .3rem; }
+.mui-pciker-list li {font-size: .3rem;}
+
+/*标题栏*/
+.mui-bar { height: 1rem; }
+.mui-title{height: 100%;line-height:1rem ;font-size: .36rem;}
+.mui-bar.mui-bar-nav{background-color:  #1AAD19;}/*5ead3e*/
+.mui-bar-nav.mui-bar .mui-icon{font-size: .5rem; color: white; }
+.mui-bar .mui-icon{padding-top: 0; padding-bottom: 0; top: 50%; transform: translateY(-50%);-webkit-transform: translateY(-50%);}
+.mui-bar-nav~.mui-content { padding-top: 1rem; }
+.mui-bar button{position: absolute;top: 50%; transform: translateY(-50%);-webkit-transform: translateY(-50%); margin: auto .1rem; font-size: .3rem; right: 0;background-color: #1AAD19; border-color: #1AAD19; color: #FFFFFF; border: solid 1px #FFFFFF; border-radius: 4px;}
+
+/*actionSheet*/
+.mui-popover .mui-table-view{font-size: .3rem;}
+
+
+/*alert弹出框*/
+.mui-popup{ width: 5rem;}
+.mui-popup-title{font-size: .36rem;}
+.mui-popup-title+.mui-popup-text{font-size: .3rem;}
+.mui-popup-buttons{height: .7rem;}
+.mui-popup-button{height: .7rem;line-height: .7rem;font-size: .3rem;color: #09BB07;}
+
+/*toast消息框*/
+.mui-toast-message{font-size: .3rem;padding: .2rem .3rem;}
+/*.mui-toast-container{font-size: .3rem;}*/
+
+
+/*无数据*/
+.NoResult{position: absolute;width: 100%;top: 50%;margin: 0;color:#999;font-size: .36rem;text-align: center;}
+
+ul{list-style: none;padding: 0;margin: 0;}
