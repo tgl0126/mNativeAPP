@@ -3,17 +3,60 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title>new webview</title>
-		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/fontSize.js" ></script>
+		<title>嘻嘻</title>
 		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<script type="text/javascript" src="../js/immersed.js" ></script>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/vue.min.js" ></script>
+		<style>
+			.xihaStyle{background: #09BB07;}
+		</style>
 	</head>
 	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <h1 class="mui-title">嘻嘻</h1>
+		</header>
 		<div class="mui-content">
-			<p style="margin-top:20px;margin-left: 20px;">签约。</p>
+			<div class="mui-slider">
+			    <div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+			        <a class="mui-control-item" href="#item1">中国有嘻哈</a>
+			        <a class="mui-control-item" href="#item2">中国好声音</a>
+			    </div>
+			    <div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6"></div>
+			    <div class="mui-slider-group">
+			        <div id="item1" class="mui-slider-item mui-control-content mui-active">
+			            <ul class="mui-table-view">
+			                <li class="mui-table-view-cell" v-bind:class="{'xihaStyle':(item.status===1)}" v-for="item in xiha" >{{item.value}}</li>
+			                <!--<li class="mui-table-view-cell" v-bind:class="" v-for="item in xiha" v-else>{{item.value}}</li>-->
+			            </ul>
+			        </div>
+			        <div id="item2" class="mui-slider-item mui-control-content">
+			            <ul class="mui-table-view">
+			                <li class="mui-table-view-cell" v-for="item in voice">{{item.value}}</li>
+			            </ul>
+			        </div>
+			    </div>
+			</div>
 		</div>
 		
 		<script>
 			mui.init();
+			mui.ready(function(){
+				
+			})
+			var mVue=new Vue({
+				el:".mui-content",
+				data:{
+					xiha:[{value:"嘻哈1",status:0},{value:"嘻哈2",status:0},{value:"嘻哈3",status:1},{value:"嘻哈4",status:0},{value:"嘻哈1",status:0},{value:"嘻哈2",status:0},{value:"嘻哈3",status:1},{value:"嘻哈4",status:0},{value:"嘻哈1",status:0},{value:"嘻哈2",status:0},{value:"嘻哈3",status:1},{value:"嘻哈4",status:0},{value:"嘻哈1",status:0},{value:"嘻哈2",status:0},{value:"嘻哈3",status:1},{value:"嘻哈4",status:0}],
+					isActive:this.show,
+					voice:[{value:"声音1"},{value:"声音2"},{value:"声音3"},{value:"声音4"},{value:"声音5"}]
+				},
+				methods:{
+					
+				}
+			})
 		</script>
 	</body>
 </html>

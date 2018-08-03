@@ -20,7 +20,7 @@
 	    	.item-icon:after{content: "";border: solid .12rem #0077B3;}
 	    	.item-content{padding: .2rem .1rem;}
 	    	/*内容*/
-	    	.item-content-li{ display: inline-block;margin-top: .2rem;width: 24%;border: solid 1px #00d0d0;border-radius: 10px;}/*10AEFF;*/
+	    	.item-content-li{ display: inline-block;margin: .2rem .05rem;width: 23%;border: solid 1px #00d0d0;border-radius: 10px;}/*10AEFF;*/
 	    	.item-content-li p{margin: 0;padding: .2rem 0; text-align: center; font-size: .3rem; line-height: 1.2;}
 	    	.item-content-li .item-content-li-value{padding: .2rem 0 0;font-size: .36rem;color: #0077B3;}
 	    	.item-content-li-name{color: #999;}
@@ -41,43 +41,54 @@
 		<div class="item">
 			<div class="item-title">
 				<span class="item-icon"> </span>
-				<span class="item-name">签约统计</span>
+				<span class="item-name">统计</span>
 			</div>
 			<ul class="item-content">
-				<li class="item-content-li">
-					<p class="item-content-li-value">1</p>
-					<p class="item-content-li-name">今日新增</p>
-				</li>
-				<li class="item-content-li">
-					<p class="item-content-li-value">1</p>
-					<p class="item-content-li-name">今日监测</p>
-				</li>
-				<li class="item-content-li">
-					<p class="item-content-li-value">1</p>
-					<p class="item-content-li-name">签约人数</p>
-				</li>
-				<li class="item-content-li">
-					<p class="item-content-li-value">1</p>
-					<p class="item-content-li-name">未签约人数</p>
+				<li class="item-content-li" v-for="item in tatals">
+					<p class="item-content-li-value">{{item.titleValue}}</p>
+					<p class="item-content-li-name">{{item.titleName}}</p>
 				</li>
 			</ul>
 		</div>
 		<div class="item">
 			<div class="item-title">
-				<span class="item-icon"> </span>
-				<span class="item-name">重点人群</span>
+				<span class="item-icon"></span>
+				<span class="item-name">重点</span>
 			</div>
 			<ul class="item-content" id="ul_item_point">
+				<li class="item-content-li" v-for="item in persons" v-on:click="openWin">
+					<p class="item-content-li-value">{{item.titleValue}}</p>
+					<p class="item-content-li-name">{{item.titleName}}</p>
+				</li>
 			</ul>
 		</div>
+		
 	</div>
-
 		<script src="js/util.js"></script>
+		<script type="text/javascript" src="js/vue.min.js" ></script>
 		<script type="text/javascript">
-			(function() {
-				mui.init({
+			mui.init({
 					swipeBack: true //启用右滑关闭功能
 				});
+				var mVue=new Vue({
+						el:".mui-content",
+						data:{
+							tatals:[{titleName:"今日新增",titleValue:"3"},
+							{titleName:"昨日收治",titleValue:"13"},
+							{titleName:"今日预收",titleValue:"23"},
+							{titleName:"今日总计",titleValue:"33"}],
+							persons:[{titleName:"老年人",titleValue:"3"},
+							{titleName:"中年人",titleValue:"13"},
+							{titleName:"脑血栓患者",titleValue:"23"},
+							{titleName:"糖尿病",titleValue:"33"}]
+						},
+						methods:{
+							openWin:function (){
+							mui.openWindow({url:"html/sign.html",id:"sign.html"})
+						}
+						}
+				})
+				
 				mui.plusReady(function() {
 					// 创建子webview窗口 并初始化
 					var aniShow = {};
@@ -144,7 +155,6 @@
 						}*/
 					});
 				});
-			})();
 		</script>
 	</body>
 

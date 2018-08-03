@@ -23,11 +23,16 @@ var util = {
 			subpages = util.options.subpages,
 			self = plus.webview.currentWebview(),
 			temp = {};
-			
+		
 		//兼容安卓上添加titleNView 和 设置沉浸式模式会遮盖子webview内容
 		if(mui.os.android) {
+			var immersed=0,ms=(/Html5Plus\/.+\s\(.*(Immersed\/(\d+\.?\d*).*)\)/gi).exec(navigator.userAgent);
+			console.log(immersed+"  "+ms.length)
+			if(ms&&ms.length>=3){
+				immersed=parseFloat(ms[2]);
+			}
 			if(plus.navigator.isImmersedStatusbar()) {
-				subpage_style.top += plus.navigator.getStatusbarHeight();
+				subpage_style.top += immersed;//plus.navigator.getStatusbarHeight();
 			}
 			if(self.getTitleNView()) {
 				subpage_style.top += 40;

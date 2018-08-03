@@ -39,7 +39,7 @@
 			<img class="logo" src="images/logo.png" />
 			<div class="middle-func">
 				<div>
-					<span class="iconfont icon-yisheng"></span>
+					<span class="mui-icon mui-icon-person"></span>
 					<input id="mobilePhone" type="text" class="" placeholder="用户账号"/>
 				</div>
 				<div>
@@ -60,6 +60,7 @@
 			mui.plusReady(function(){
 				document.querySelector("#userLogin").addEventListener('tap',function(){
 					console.log("ddd")
+					plus.webview.getSecondWebview().close();
 				})
 				setTimeout(function(){
 					plus.navigator.closeSplashscreen();
